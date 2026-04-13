@@ -5,11 +5,13 @@ Terminal-style portfolio website for Michael Sipes, built with Next.js 16 and Re
 ## Quick Reference
 
 ```bash
-npm run dev        # Start dev server
-npm run build      # Static export build
-npm run test:run   # Run all tests once
-npm run test       # Run tests in watch mode
-npm run lint       # ESLint
+npm run dev          # Start dev server
+npm run build        # Static export build
+npm run test:run     # Run all Vitest tests once
+npm run test         # Vitest watch mode
+npm run test:e2e     # Playwright mobile-viewport specs
+npm run test:e2e:ui  # Playwright UI mode
+npm run lint         # ESLint
 ```
 
 ## Architecture
@@ -67,9 +69,11 @@ Key color roles:
 
 ## Testing
 
-Vitest 4 + React Testing Library + jsdom. Globals enabled — `describe`, `it`, `expect`, `vi` need no imports. Tests mirror source structure under `__tests__/`.
+**Vitest 4 + React Testing Library + jsdom** for unit and component tests. Globals enabled — `describe`, `it`, `expect`, `vi` need no imports. Tests mirror source structure under `__tests__/`.
 
 Tests that exercise terminal commands must import `@/lib/registerCommands` to populate the registry.
+
+**Playwright** (`e2e/`) is scoped to mobile-viewport regression only — it catches layout bugs that jsdom cannot reproduce (e.g., `100vh` vs mobile URL-bar interactions). Do not migrate existing Vitest tests to Playwright. See `e2e/README.md` for the real-device debug workflow (`adb reverse` + `brave://inspect`).
 
 ## Static Export
 

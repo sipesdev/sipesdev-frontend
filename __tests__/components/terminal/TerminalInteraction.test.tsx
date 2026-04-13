@@ -16,6 +16,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Terminal } from "@/components/terminal/Terminal";
+import { USER } from "@/lib/constants";
 
 // ---------------------------------------------------------------------------
 // Mock next/image
@@ -69,7 +70,7 @@ describe("Terminal interaction - suggestion buttons", () => {
     const aboutButton = screen.getByRole("button", { name: "about" });
     await user.click(aboutButton);
 
-    expect(screen.getByText("Michael Sipes")).toBeInTheDocument();
+    expect(screen.getByText(USER.name)).toBeInTheDocument();
   });
 });
 

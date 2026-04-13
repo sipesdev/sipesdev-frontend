@@ -53,10 +53,10 @@ describe("WelcomeBanner", () => {
     expect(screen.getByText(/Welcome!/)).toBeInTheDocument();
   });
 
-  it("renders the user bio text 'I create things.'", () => {
+  it("renders the user bio text from constants", () => {
     render(<WelcomeBanner />);
 
-    expect(screen.getByText(/I create things\./)).toBeInTheDocument();
+    expect(screen.getByText(USER.bio, { exact: false })).toBeInTheDocument();
   });
 
   it("renders the help instruction text", () => {
@@ -151,13 +151,13 @@ describe("HelpOutput", () => {
 // AboutOutput
 // ===========================================================================
 describe("AboutOutput", () => {
-  it("renders the user name 'Michael Sipes'", () => {
+  it("renders the user name from constants", () => {
     render(<AboutOutput />);
 
     expect(screen.getByText(USER.name)).toBeInTheDocument();
   });
 
-  it("renders the user bio 'I create things.'", () => {
+  it("renders the user bio from constants", () => {
     render(<AboutOutput />);
 
     expect(screen.getByText(USER.bio)).toBeInTheDocument();

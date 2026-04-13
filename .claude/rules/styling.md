@@ -64,6 +64,12 @@ Text selection uses `ctp-surface2` background with `ctp-text` foreground, define
 - Use `gap-*` and `flex` / `flex-wrap` for horizontal layouts (e.g., skill badges, section lists).
 - Badge-like elements use `px-2 py-0.5 text-sm rounded bg-ctp-surface0`.
 
+## Viewport Heights
+
+Use `h-dvh` / `min-h-dvh` for full-viewport containers. **Never use `h-screen` / `min-h-screen`.**
+
+On mobile browsers `100vh` resolves to the *large* viewport (URL-bar-collapsed) and exceeds the visible area when the URL bar is showing. The browser compensates by scrolling the document body, which can push content above the viewport — and with `body { overflow: hidden }` set globally, users cannot scroll to recover it. `100dvh` tracks the current visible viewport and updates as browser chrome expands/collapses. `dvh` is Baseline Widely Available (Chrome 108+, Safari 15.4+, Firefox 101+) and needs no fallback for this project's audience.
+
 ## Adding New Colors
 
 If a new Catppuccin Mocha color is needed (all 26 palette colors are already defined), add it to the `@theme inline` block in `app/globals.css` following the existing pattern:

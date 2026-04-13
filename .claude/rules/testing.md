@@ -64,3 +64,17 @@
 ## TypeScript Types in Tests
 
 - `vitest/globals` and `@testing-library/jest-dom` types are declared in `tsconfig.json` under `compilerOptions.types`. No additional type imports needed for test globals.
+
+## Playwright (mobile-viewport regression only)
+
+Playwright lives in `e2e/` and is scoped narrowly: catching layout bugs that jsdom cannot reproduce. **Do not migrate existing Vitest tests to Playwright** — Vitest + RTL remains the primary runner for unit and component tests.
+
+- **Config**: `playwright.config.ts` at the project root. `webServer` auto-boots `npm run dev` and reuses an existing dev server locally.
+- **Projects**: `Pixel 7` (Chromium mobile) and `iPhone 13` (WebKit mobile). No desktop projects — regressions at desktop sizes belong in Vitest.
+- **Specs**: `e2e/*.spec.ts`. The Vitest `exclude` pattern in `vitest.config.mts` keeps `e2e/**` out of the Vitest runner.
+- **Running**:
+  - `npm run test:e2e` -- headless across all projects.
+  - `npm run test:e2e:ui` -- Playwright UI mode for iterating on a failing spec.
+  - First-time setup requires browsers: `npx playwright install chromium webkit`.
+- **CSS class assertions are acceptable in Playwright** when the behavior cannot be captured another way (e.g., Chromium emulation flattens `100vh === innerHeight`, so the mobile URL-bar viewport bug is only testable via class check). The `css: false` / no-class-assertions rule above applies to Vitest/jsdom only, where computed styles are not resolved.
+- **Real-device debugging**: `e2e/README.md` documents the Android + `adb reverse` + `brave://inspect` workflow for bugs that emulation cannot reproduce.

@@ -11,7 +11,7 @@ export function WelcomeBanner({ onCommand }: WelcomeBannerProps) {
 
   return (
     <div>
-      <pre className="text-ctp-mauve text-xs sm:text-sm leading-tight overflow-x-auto">
+      <pre className="text-ctp-mauve text-[0.6rem] sm:text-sm leading-tight overflow-x-auto">
         {ASCII_BANNER}
       </pre>
       <div className="mt-3 text-ctp-text">

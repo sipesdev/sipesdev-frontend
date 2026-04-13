@@ -75,7 +75,7 @@ export function Terminal() {
 
   return (
     <div
-      className="h-screen overflow-y-auto bg-ctp-base p-4 text-sm sm:text-base"
+      className="h-dvh overflow-y-auto bg-ctp-base p-4 text-sm sm:text-base"
       onClick={focusInput}
     >
       <TerminalHistory history={history} />

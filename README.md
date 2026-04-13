@@ -1,6 +1,6 @@
 # sipesdev-frontend
 
-A terminal-style portfolio website for Michael Sipes, built with Next.js 16, React 19, and Tailwind CSS 4. The entire UI is an interactive terminal emulator themed with the Catppuccin Mocha color palette.
+My personal portfolio website, built with Next.js 16, React 19, and Tailwind CSS 4. The entire UI is an interactive terminal emulator themed with the Catppuccin Mocha color palette.
 
 ## Tech Stack
 
@@ -8,7 +8,7 @@ A terminal-style portfolio website for Michael Sipes, built with Next.js 16, Rea
 - **UI:** React 19, Tailwind CSS 4
 - **Font:** JetBrains Mono
 - **Theme:** Catppuccin Mocha
-- **Testing:** Vitest 4, React Testing Library, jsdom
+- **Testing:** Vitest 4 + React Testing Library + jsdom for unit/component; Playwright for mobile-viewport regression
 - **Language:** TypeScript (strict mode)
 
 ## Getting Started
@@ -27,8 +27,10 @@ Open [http://localhost:3000](http://localhost:3000) to view the terminal.
 | `npm run dev`      | Start development server     |
 | `npm run build`    | Static export build to `out/`|
 | `npm run lint`     | Run ESLint                   |
-| `npm run test`     | Run tests in watch mode      |
-| `npm run test:run` | Run all tests once           |
+| `npm run test`     | Run Vitest tests in watch mode |
+| `npm run test:run` | Run all Vitest tests once    |
+| `npm run test:e2e` | Run Playwright mobile-viewport specs |
+| `npm run test:e2e:ui` | Playwright UI mode for iterating on a failing spec |
 
 ## Project Structure
 
