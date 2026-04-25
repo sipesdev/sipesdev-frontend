@@ -68,10 +68,6 @@ The following commands are **registered** in `lib/registerCommands.tsx` (so they
 
 Do not put meaningful logic in the `execute` function of these commands. Their registered `execute` returns `null` as a placeholder.
 
-## The `cat` Command
-
-The `cat` command delegates to `executeCommand()` with its first argument. This means `cat about` is equivalent to typing `about`. Be aware that `cat` can invoke any registered command, not just "section" commands.
-
 ## Data & Constants
 
 - Static data (user info, links, projects, skills, badges, ASCII banner) lives in `lib/constants.ts`.

@@ -27,7 +27,7 @@ app/
 components/
   terminal/             # Core terminal UI
     Terminal.tsx         # Main component — state, command processing, history
-    TerminalInput.tsx    # Input with tab completion, arrow-key history, Ctrl+L/C
+    TerminalInput.tsx    # Input with ZSH-style autocomplete (ghost text + Tab menu), arrow-key history, Ctrl+L/C
     TerminalOutput.tsx   # Output wrapper with aria-live
     TerminalHistory.tsx  # Renders past command/output pairs
     PromptPrefix.tsx     # "michael@sipes.dev:~$ " prompt display

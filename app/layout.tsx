@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+// Self-hosted JetBrains Mono includes the full Unicode range — notably
+// box-drawing (U+2500–257F) and block elements (U+2580–259F) used by the
+// SIPESDEV ASCII banner. The Google Fonts subset ships only Latin glyphs,
+// causing those box chars to fall back to a different font with mismatched
+// widths and breaking the banner alignment.
+const jetbrainsMono = localFont({
+  src: "./fonts/JetBrainsMono-Regular.woff2",
   variable: "--font-jetbrains",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -18,10 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${jetbrainsMono.variable} font-mono antialiased`}>
-        {children}
-      </body>
+    <html lang="en" className={jetbrainsMono.variable}>
+      <body className="font-mono antialiased">{children}</body>
     </html>
   );
 }

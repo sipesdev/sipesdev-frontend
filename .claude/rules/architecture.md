@@ -26,7 +26,7 @@ This is a static-export Next.js 16 application with React 19 that renders a term
 | Component          | Client? | Purpose                                          |
 |--------------------|---------|--------------------------------------------------|
 | `Terminal`         | Yes     | Root component. Manages history state, command processing, and input focus. |
-| `TerminalInput`    | Yes     | Controlled input with tab completion, command history navigation (arrow keys), and Ctrl+L clear. |
+| `TerminalInput`    | Yes     | Controlled input with ZSH-style autocomplete (inline ghost text + Tab-triggered menu), arrow-key command-history navigation, Right Arrow to accept ghost, Escape to dismiss menu, and Ctrl+L / Ctrl+C. |
 | `TerminalHistory`  | No      | Renders the list of `HistoryEntry` objects.       |
 | `TerminalOutput`   | No      | Renders a single history entry (prompt + output). |
 | `PromptPrefix`     | No      | Renders the `michael@sipes.dev:~$` prompt string. |

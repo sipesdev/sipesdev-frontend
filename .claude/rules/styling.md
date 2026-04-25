@@ -48,10 +48,12 @@ All external links must use this exact pattern:
 ## Font
 
 - The entire site uses **JetBrains Mono** as a monospace font.
-- Loaded via `next/font/google` in `app/layout.tsx` and exposed as CSS variable `--font-jetbrains`.
-- Tailwind's `--font-mono` is set to `var(--font-jetbrains), monospace` in the theme.
+- Self-hosted via `next/font/local` in `app/layout.tsx` from `app/fonts/JetBrainsMono-Regular.woff2` and exposed as the CSS variable `--font-jetbrains` (placed on `<html>` so the variable resolves at `:root`, where Tailwind's `--font-mono` references it).
+- Self-hosting is required because Google Fonts ships only the Latin subset, while the SIPESDEV ASCII banner uses Unicode block (U+2580–U+259F) and box-drawing (U+2500–U+257F) glyphs that fall back to a different font with mismatched widths under the Google subset.
+- Tailwind's `--font-mono` is set to `var(--font-jetbrains), monospace` in the `@theme inline` block.
 - Use `font-mono` Tailwind class when needed (already applied to `<body>`).
 - Never use sans-serif or serif fonts.
+- The font file is licensed under the SIL Open Font License 1.1; the license text lives at `app/fonts/OFL.txt` and the README credits JetBrains.
 
 ## Selection Styling
 

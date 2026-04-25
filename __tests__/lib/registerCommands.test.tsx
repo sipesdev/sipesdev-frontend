@@ -11,7 +11,6 @@
  *   - whoami (string return)
  *   - date (string return)
  *   - ls (inline JSX - section names)
- *   - cat (delegates to executeCommand)
  *   - sudo (inline JSX - easter egg)
  *   - github (inline JSX - profile, link, badges)
  *   - banner (delegates to WelcomeBanner component)
@@ -29,8 +28,8 @@ import { getCommands } from "@/lib/commands";
 import type { ReactNode } from "react";
 
 // ---------------------------------------------------------------------------
-// Mock next/image -- required for AboutOutput (rendered via cat about)
-// and WelcomeBanner (rendered via banner command)
+// Mock next/image -- required for AboutOutput (rendered via the `about` command)
+// and WelcomeBanner (rendered via the `banner` command)
 // ---------------------------------------------------------------------------
 vi.mock("next/image", () => ({
   __esModule: true,

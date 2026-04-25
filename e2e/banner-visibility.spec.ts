@@ -55,12 +55,14 @@ test.describe("SIPESDEV banner visibility on mobile", () => {
   }) => {
     await page.goto("/");
 
-    // The ASCII art is 61 characters wide. In JetBrains Mono a font size
-    // above ~10.7px on a 390px-wide iPhone 13 viewport (358px effective
-    // after p-4 padding) overflows, forcing the user to swipe to see the
-    // full logo. WelcomeBanner.tsx uses text-[0.6rem] (9.6px) below the
-    // sm breakpoint to stay within the viewport; this spec guards that
-    // scrollWidth <= clientWidth on mobile projects.
+    // The SIPESDEV ASCII banner uses Unicode block/box-drawing chars (█, ═,
+    // ╗, etc.) that render at the standard 0.6em monospace width in the
+    // self-hosted JetBrains Mono font (which includes those glyphs natively
+    // — the Google Fonts subset does not). At 61 chars wide × 5.77px per
+    // char (text-[0.375rem] = 6px font), banner width ≈ 352px, fitting the
+    // 358px iPhone 13 budget (390px viewport minus p-4 padding). This spec
+    // guards that scrollWidth <= clientWidth on mobile, catching any future
+    // change that breaks banner sizing.
     const banner = page.locator("pre").first();
     await expect(banner).toBeVisible();
 

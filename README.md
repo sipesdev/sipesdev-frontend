@@ -6,8 +6,8 @@ My personal portfolio website, built with Next.js 16, React 19, and Tailwind CSS
 
 - **Framework:** Next.js 16 (static export)
 - **UI:** React 19, Tailwind CSS 4
-- **Font:** JetBrains Mono
-- **Theme:** Catppuccin Mocha
+- **Font:** [JetBrains Mono](https://www.jetbrains.com/lp/mono/) (self-hosted, SIL OFL 1.1)
+- **Theme:** [Catppuccin Mocha](https://catppuccin.com/)
 - **Testing:** Vitest 4 + React Testing Library + jsdom for unit/component; Playwright for mobile-viewport regression
 - **Language:** TypeScript (strict mode)
 
@@ -71,3 +71,8 @@ The terminal supports commands registered via `registerCommand()` in `lib/regist
 ## Static Export
 
 The site is statically exported (`output: "export"` in `next.config.ts`). Running `npm run build` produces a fully static site in the `out/` directory — no Node.js server required at runtime.
+
+## Credits & Licenses
+
+- **JetBrains Mono** — © 2020 The JetBrains Mono Project Authors. Self-hosted from `app/fonts/JetBrainsMono-Regular.woff2` and licensed under the [SIL Open Font License, Version 1.1](app/fonts/OFL.txt). The font is loaded via `next/font/local` rather than `next/font/google` because the Google Fonts subset omits the Unicode block (U+2580–U+259F) and box-drawing (U+2500–U+257F) glyphs used by the SIPESDEV ASCII banner.
+- **Catppuccin Mocha** — color palette by the Catppuccin organization, used under the MIT License. See [catppuccin/catppuccin](https://github.com/catppuccin/catppuccin).

@@ -266,3 +266,30 @@ describe("Terminal - empty input", () => {
     expect(screen.queryByText(/command not found/)).not.toBeInTheDocument();
   });
 });
+
+// ---------------------------------------------------------------------------
+// Autocomplete Integration
+//
+// Full-stack verification that the ZSH-style autocomplete feature integrates
+// correctly with Terminal command processing: the user types a partial
+// command, opens the menu via Tab, accepts via Enter (which fills the value
+// but does not submit), and submits via a second Enter.
+// ---------------------------------------------------------------------------
+describe("Terminal - autocomplete integration", () => {
+  it("user can type a partial command, open menu via Tab, accept via Enter, and submit via second Enter", async () => {
+    const user = userEvent.setup();
+    render(<Terminal />);
+    const input = screen.getByLabelText("Terminal command input") as HTMLInputElement;
+
+    await user.click(input);
+    await user.type(input, "h");
+    await user.keyboard("{Tab}");
+    // Menu open with help highlighted.
+    await user.keyboard("{Enter}");
+    // Input now "help", menu closed, command not yet submitted.
+    expect(input.value).toBe("help");
+    await user.keyboard("{Enter}");
+    // help command output should now be visible in history.
+    expect(screen.getByText(/Available commands:/i)).toBeInTheDocument();
+  });
+});
