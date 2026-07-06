@@ -50,3 +50,5 @@ next-env.d.ts
 /playwright-report
 /test-results
 /playwright/.cache
+# Generated blog content (compiled from content/blog/*.md)
+/lib/generated/

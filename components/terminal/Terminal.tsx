@@ -17,7 +17,12 @@ export function Terminal() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const nextId = useRef(0);
   const commandHistoryRef = useRef(commandHistory);
-  commandHistoryRef.current = commandHistory;
+  // Keep the ref in sync so the memoized processCommand (deps: []) can read the
+  // latest command history when handling the `history` command. Updated in an
+  // effect rather than during render (refs must not be mutated while rendering).
+  useEffect(() => {
+    commandHistoryRef.current = commandHistory;
+  }, [commandHistory]);
 
   const processCommand = useCallback((input: string) => {
     const trimmed = input.trim();
@@ -75,7 +80,7 @@ export function Terminal() {
 
   return (
     <div
-      className="h-dvh overflow-y-auto bg-ctp-base p-4 text-sm sm:text-base"
+      className="h-dvh overflow-y-auto bg-mb-bg p-4 text-sm sm:text-base"
       onClick={focusInput}
     >
       <TerminalHistory history={history} />

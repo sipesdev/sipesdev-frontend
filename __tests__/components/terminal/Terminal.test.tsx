@@ -146,7 +146,7 @@ describe("Terminal - command execution", () => {
     await user.keyboard("{Enter}");
 
     // The history should show the input "whoami" as a rendered span
-    // TerminalHistory renders entry.input in a span with text-ctp-text class
+    // TerminalHistory renders entry.input in a span with text-mb-text class
     expect(screen.getByText("whoami")).toBeInTheDocument();
   });
 

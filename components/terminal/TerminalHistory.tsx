@@ -14,7 +14,7 @@ export function TerminalHistory({ history }: TerminalHistoryProps) {
           {entry.input !== "" && (
             <div className="flex items-center">
               <PromptPrefix />
-              <span className="text-ctp-text">{entry.input}</span>
+              <span className="text-mb-text">{entry.input}</span>
             </div>
           )}
           <TerminalOutput>{entry.output}</TerminalOutput>

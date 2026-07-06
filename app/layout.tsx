@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
 // Self-hosted JetBrains Mono includes the full Unicode range — notably
@@ -14,8 +15,17 @@ const jetbrainsMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Michael Sipes | Software Engineer",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Michael Sipes | Software Engineer",
+    template: "%s · Michael Sipes",
+  },
   description: "I create things.",
+  openGraph: {
+    type: "website",
+    siteName: "Michael Sipes",
+    url: SITE_URL,
+  },
 };
 
 export default function RootLayout({

@@ -70,7 +70,7 @@ describe("WelcomeBanner", () => {
     const mockOnCommand = vi.fn();
     render(<WelcomeBanner onCommand={mockOnCommand} />);
 
-    const expectedSuggestions = ["about", "projects", "contact", "help"];
+    const expectedSuggestions = ["about", "projects", "blog", "contact", "help"];
     for (const suggestion of expectedSuggestions) {
       expect(screen.getByRole("button", { name: suggestion })).toBeInTheDocument();
     }

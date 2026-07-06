@@ -14,6 +14,10 @@ export const LINKS = {
   email: "michael@sipes.dev",
 };
 
+// Canonical production origin — used for shareable blog links, metadataBase,
+// the sitemap, and robots.txt. No trailing slash.
+export const SITE_URL = "https://sipes.dev";
+
 export const GITHUB_BADGES = ["Public Sponsor", "Pull Shark"];
 
 export const PROJECTS: Project[] = [

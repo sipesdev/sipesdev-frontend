@@ -7,19 +7,19 @@ interface WelcomeBannerProps {
 }
 
 export function WelcomeBanner({ onCommand }: WelcomeBannerProps) {
-  const suggestions = ["about", "projects", "skills", "contact", "help"];
+  const suggestions = ["about", "projects", "blog", "skills", "contact", "help"];
 
   return (
     <div>
-      <pre className="text-ctp-mauve text-[0.375rem] sm:text-sm leading-tight overflow-x-auto">
+      <pre className="text-mb-accent text-[0.375rem] sm:text-sm leading-tight overflow-x-auto">
         {ASCII_BANNER}
       </pre>
-      <div className="mt-3 text-ctp-text">
+      <div className="mt-3 text-mb-text">
         Welcome! I&apos;m {USER.name}. {USER.bio}
       </div>
-      <div className="mt-1 text-ctp-subtext0">
+      <div className="mt-1 text-mb-subtext0">
         Type{" "}
-        <span className="text-ctp-green">&apos;help&apos;</span> to see
+        <span className="text-mb-accent">&apos;help&apos;</span> to see
         available commands.
       </div>
       {onCommand && (
@@ -28,7 +28,7 @@ export function WelcomeBanner({ onCommand }: WelcomeBannerProps) {
             <button
               key={cmd}
               onClick={() => onCommand(cmd)}
-              className="px-3 py-1 text-sm rounded border border-ctp-surface1 text-ctp-blue hover:bg-ctp-surface0 hover:text-ctp-lavender transition-colors cursor-pointer"
+              className="px-3 py-1 text-sm rounded border border-mb-surface1 text-mb-blue hover:bg-mb-surface0 hover:text-mb-blue-bright transition-colors cursor-pointer"
             >
               {cmd}
             </button>

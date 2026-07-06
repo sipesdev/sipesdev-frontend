@@ -245,7 +245,7 @@ export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
             onKeyDown={handleKeyDown}
             onSelect={handleSelectionChange}
             onClick={handleSelectionChange}
-            className="bg-transparent text-ctp-text caret-ctp-green outline-none"
+            className="bg-transparent text-mb-text caret-mb-accent outline-none"
             aria-label="Terminal command input"
             autoFocus
             autoComplete="off"
@@ -256,7 +256,7 @@ export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
           {ghostSuffix && !menuOpen && (
             <span
               data-testid="ghost-suffix"
-              className="text-ctp-overlay1 whitespace-pre pointer-events-none"
+              className="text-mb-overlay1 whitespace-pre pointer-events-none"
               aria-hidden="true"
             >
               {ghostSuffix}
@@ -276,8 +276,8 @@ export const TerminalInput = forwardRef<HTMLInputElement, TerminalInputProps>(
                 data-selected={i === menuIndex ? "true" : "false"}
                 className={
                   i === menuIndex
-                    ? "text-ctp-mauve whitespace-pre"
-                    : "text-ctp-subtext0 whitespace-pre"
+                    ? "text-mb-accent whitespace-pre"
+                    : "text-mb-subtext0 whitespace-pre"
                 }
                 onMouseDown={(e) => {
                   e.preventDefault();

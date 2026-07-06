@@ -13,8 +13,8 @@ export function AboutOutput() {
           className="rounded-lg"
         />
         <div className="flex flex-col gap-1">
-          <div className="text-ctp-mauve text-lg">{USER.name}</div>
-          <div className="text-ctp-text">{USER.bio}</div>
+          <div className="text-mb-accent text-lg">{USER.name}</div>
+          <div className="text-mb-text">{USER.bio}</div>
         </div>
       </div>
       <div className="flex flex-col gap-1 mt-1">
@@ -22,7 +22,7 @@ export function AboutOutput() {
           href={LINKS.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-ctp-blue hover:text-ctp-lavender hover:underline"
+          className="text-mb-blue hover:text-mb-blue-bright hover:underline"
         >
           github.com/sipesdev
         </a>
@@ -30,13 +30,13 @@ export function AboutOutput() {
           href={LINKS.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-ctp-blue hover:text-ctp-lavender hover:underline"
+          className="text-mb-blue hover:text-mb-blue-bright hover:underline"
         >
           linkedin.com/in/sipesdev
         </a>
         <a
           href={`mailto:${LINKS.email}`}
-          className="text-ctp-blue hover:text-ctp-lavender hover:underline"
+          className="text-mb-blue hover:text-mb-blue-bright hover:underline"
         >
           {LINKS.email}
         </a>

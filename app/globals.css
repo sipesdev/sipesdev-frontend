@@ -1,46 +1,38 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Catppuccin Mocha - Full Palette */
-  --color-ctp-rosewater: #f5e0dc;
-  --color-ctp-flamingo: #f2cdcd;
-  --color-ctp-pink: #f5c2e7;
-  --color-ctp-mauve: #cba6f7;
-  --color-ctp-red: #f38ba8;
-  --color-ctp-maroon: #eba0ac;
-  --color-ctp-peach: #fab387;
-  --color-ctp-yellow: #f9e2af;
-  --color-ctp-green: #a6e3a1;
-  --color-ctp-teal: #94e2d5;
-  --color-ctp-sky: #89dceb;
-  --color-ctp-sapphire: #74c7ec;
-  --color-ctp-blue: #89b4fa;
-  --color-ctp-lavender: #b4befe;
-  --color-ctp-text: #cdd6f4;
-  --color-ctp-subtext1: #bac2de;
-  --color-ctp-subtext0: #a6adc8;
-  --color-ctp-overlay2: #9399b2;
-  --color-ctp-overlay1: #7f849c;
-  --color-ctp-overlay0: #6c7086;
-  --color-ctp-surface2: #585b70;
-  --color-ctp-surface1: #45475a;
-  --color-ctp-surface0: #313244;
-  --color-ctp-base: #1e1e2e;
-  --color-ctp-mantle: #181825;
-  --color-ctp-crust: #11111b;
+  /* Matte Black — one ramp: #121212 background up through #1e1e1e surfaces,
+     #bebebe text, #e68e0d orange accent. Semantic role tokens (mb-*). */
+  --color-mb-bg: #121212; /* page background */
+  --color-mb-bar: #1a1a1a; /* deep surface / prompt bar */
+  --color-mb-surface0: #1e1e1e; /* surfaces, badges */
+  --color-mb-surface1: #2a2a2a; /* elevated surfaces, borders */
+  --color-mb-surface2: #3a3a3a; /* dividers */
+  --color-mb-overlay0: #565658; /* faint separators */
+  --color-mb-overlay1: #6e6e70; /* muted labels */
+  --color-mb-subtext0: #8a8a8d; /* secondary text */
+  --color-mb-subtext1: #a8a8aa; /* secondary text (brighter) */
+  --color-mb-text: #bebebe; /* body text */
+  --color-mb-bright: #eaeaea; /* emphasized text */
+  --color-mb-accent: #e68e0d; /* orange — headings, prompt, success */
+  --color-mb-accent2: #f59e0b; /* lighter orange — labels, highlights */
+  --color-mb-blue: #7aa2f7; /* links */
+  --color-mb-blue-bright: #a9c1ff; /* link hover */
+  --color-mb-magenta: #c678dd; /* rare accent */
+  --color-mb-danger: #b91c1c; /* errors */
 
   --font-mono: var(--font-jetbrains), monospace;
 }
 
 body {
-  background: var(--color-ctp-base);
-  color: var(--color-ctp-text);
+  background: var(--color-mb-bg);
+  color: var(--color-mb-text);
   font-family: var(--font-mono);
   margin: 0;
   overflow: hidden;
 }
 
 ::selection {
-  background: var(--color-ctp-surface2);
-  color: var(--color-ctp-text);
+  background: var(--color-mb-surface2);
+  color: var(--color-mb-bright);
 }

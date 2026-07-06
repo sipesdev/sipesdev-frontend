@@ -10,14 +10,20 @@ This is a static-export Next.js 16 application with React 19 that renders a term
 - `next build` outputs to the `out/` directory. No Node.js server is needed at runtime.
 - **No API routes.** Do not create files under `app/api/`.
 - **No server-side data fetching.** Do not use `getServerSideProps`, `getStaticProps`, or server actions.
+- **Build-time static generation is fine** (and is how the blog works): `generateStaticParams` enumerates post slugs and `generateMetadata` emits per-page `<head>` tags at `next build`. This runs once during export and bakes the result into static HTML — it is not runtime data fetching.
+- **Markdown bodies are imported as raw strings** at build time (`turbopack.rules['*.md'] = { type: 'raw' }`), never read from disk at request time.
 - `next/image` requires `unoptimized: true` (already configured) because the image optimization API is unavailable in static export.
 - `trailingSlash: false` is set in `next.config.ts`.
 
 ## Page Structure
 
-- **Single page**: `app/page.tsx` is the only page. It renders `<Terminal />`.
-- **Layout**: `app/layout.tsx` loads JetBrains Mono font, applies global CSS, and sets metadata.
-- **No additional routes.** The entire site is the terminal interface on the root page.
+- **Home**: `app/page.tsx` renders `<Terminal />` — the terminal is the site's front door.
+- **Layout**: `app/layout.tsx` loads JetBrains Mono font, applies global CSS, and sets site-wide metadata (`metadataBase`, default Open Graph).
+- **Blog routes** (added so posts have shareable, search-indexable URLs):
+  - `app/blog/page.tsx` — the blog index at `/blog`.
+  - `app/blog/[slug]/page.tsx` — one statically pre-rendered article per post, via `generateStaticParams` + `generateMetadata`. These are the canonical, crawlable URLs a post is shared by.
+  - `app/sitemap.ts` and `app/robots.ts` emit a static `sitemap.xml` / `robots.txt` covering the home and blog URLs.
+- Beyond the home terminal and the blog routes above, do not add further routes without cause. The blog pages are the intentional exception to the original terminal-only single-page design.
 
 ## Component Architecture
 

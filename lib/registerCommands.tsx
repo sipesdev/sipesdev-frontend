@@ -5,6 +5,8 @@ import { ProjectsOutput } from "@/components/output/ProjectsOutput";
 import { ContactOutput } from "@/components/output/ContactOutput";
 import { SkillsOutput } from "@/components/output/SkillsOutput";
 import { WelcomeBanner } from "@/components/output/WelcomeBanner";
+import { BlogOutput } from "@/components/output/BlogOutput";
+import { BlogPostOutput } from "@/components/output/BlogPostOutput";
 import { GITHUB_BADGES, LINKS } from "./constants";
 
 registerCommand({
@@ -26,6 +28,14 @@ registerCommand({
 });
 
 registerCommand({
+  name: "blog",
+  description: "Read my blog posts",
+  usage: "blog [slug]",
+  execute: (args) =>
+    args[0] ? <BlogPostOutput slug={args[0]} /> : <BlogOutput />,
+});
+
+registerCommand({
   name: "contact",
   description: "Get in touch",
   execute: () => <ContactOutput />,
@@ -42,27 +52,27 @@ registerCommand({
   description: "View GitHub profile & badges",
   execute: () => (
     <div>
-      <div className="text-ctp-mauve mb-2">GitHub Profile</div>
+      <div className="text-mb-accent mb-2">GitHub Profile</div>
       <a
         href={LINKS.github}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-ctp-blue hover:text-ctp-lavender hover:underline"
+        className="text-mb-blue hover:text-mb-blue-bright hover:underline"
       >
         github.com/sipesdev
       </a>
-      <div className="mt-2 text-ctp-subtext0">Badges:</div>
+      <div className="mt-2 text-mb-subtext0">Badges:</div>
       <div className="flex gap-2 mt-1">
         {GITHUB_BADGES.map((badge) => (
           <span
             key={badge}
-            className="px-2 py-0.5 text-sm rounded bg-ctp-surface0 text-ctp-yellow"
+            className="px-2 py-0.5 text-sm rounded bg-mb-surface0 text-mb-accent2"
           >
             {badge}
           </span>
         ))}
       </div>
-      <div className="mt-2 text-ctp-overlay1">
+      <div className="mt-2 text-mb-overlay1">
         Run &apos;projects&apos; for repository details.
       </div>
     </div>
@@ -100,7 +110,7 @@ registerCommand({
   execute: () => (
     <div className="flex flex-wrap gap-4">
       {["about", "projects", "contact", "skills", "github"].map((item) => (
-        <span key={item} className="text-ctp-blue">
+        <span key={item} className="text-mb-blue">
           {item}
         </span>
       ))}
@@ -112,7 +122,7 @@ registerCommand({
   name: "sudo",
   description: "Nice try...",
   execute: () => (
-    <span className="text-ctp-red">
+    <span className="text-mb-danger">
       [sudo] password for michael: Nice try! This incident will be reported.
     </span>
   ),

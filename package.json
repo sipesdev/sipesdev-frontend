@@ -3,19 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "generate:blog": "node scripts/generate-blog-content.mjs",
+    "predev": "npm run generate:blog",
     "dev": "next dev",
+    "prebuild": "npm run generate:blog",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "pretest": "npm run generate:blog",
     "test": "vitest",
+    "pretest:run": "npm run generate:blog",
     "test:run": "vitest run",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "next": "^16.1.6",
+    "next": "^16.2.10",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",

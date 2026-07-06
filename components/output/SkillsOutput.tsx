@@ -11,21 +11,21 @@ export function SkillsOutput() {
 
   return (
     <div>
-      <div className="text-ctp-mauve mb-2">Skills</div>
+      <div className="text-mb-accent mb-2">Skills</div>
       {Object.entries(SKILLS).map(([category, items]) => (
         <div key={category} className="flex gap-4">
           <span
-            className="text-ctp-peach shrink-0"
+            className="text-mb-accent2 shrink-0"
             style={{ width: `${labelWidth}ch` }}
           >
             {formatLabel(category)}
           </span>
-          <span className="text-ctp-text">
+          <span className="text-mb-text">
             {items.map((item, i) => (
               <span key={item}>
                 {item}
                 {i < items.length - 1 && (
-                  <span className="text-ctp-overlay0"> | </span>
+                  <span className="text-mb-overlay0"> | </span>
                 )}
               </span>
             ))}

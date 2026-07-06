@@ -44,7 +44,7 @@ test.describe("SIPESDEV banner visibility on mobile", () => {
 
     // The outer terminal div is uniquely identified by its overflow + base-bg
     // combo. Whether it uses h-screen or h-dvh is what this test guards.
-    const termRoot = page.locator("div.overflow-y-auto.bg-ctp-base").first();
+    const termRoot = page.locator("div.overflow-y-auto.bg-mb-bg").first();
     await expect(termRoot).toBeAttached();
     await expect(termRoot).toHaveClass(/\bh-dvh\b/);
     await expect(termRoot).not.toHaveClass(/\bh-screen\b/);

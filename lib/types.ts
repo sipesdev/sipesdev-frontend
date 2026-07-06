@@ -19,3 +19,13 @@ export interface Project {
   languages: string[];
   url: string;
 }
+
+export interface Post {
+  slug: string;
+  title: string;
+  date: string; // ISO date, e.g. "2026-07-06"
+  summary: string;
+  tags: string[];
+  hero: string; // root-relative path, e.g. "/blog/matte-black/hero.jpg"
+  body: string; // raw markdown, imported from content/blog/<slug>.md
+}
